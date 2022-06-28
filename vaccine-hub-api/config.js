@@ -17,7 +17,7 @@ function getDatabaseUri() {
 }
 
 
-console.log("process.env: ".yellow, Object.keys(proccess.env))
+console.log("process.env: ".yellow, Object.keys(process.env))
 console.log("App Config".red)
 console.log("PORT: ".blue, PORT)
 console.log("Database URI: ".blue, getDatabaseUri())
