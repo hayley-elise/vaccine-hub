@@ -2,7 +2,8 @@ const {UnauthorisedError} = require("../utils/errors")
 
 class User {
     static async register(credentials) {
-        // user required to submit email/password; throws error if either is missing
+        // user required to submit email, password, first/last name, location & date 
+        // throws error if any is missing
         // 
         // check if user email exists in db; throws error if it does
         // 
