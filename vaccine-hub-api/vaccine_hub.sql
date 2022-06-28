@@ -1,5 +1,5 @@
 \echo 'Delete and recreate vaccine_hub database?'
-\prompt 'Press ENTER for YES, or CTRL-C to CANCEL > ' answer
+\prompt 'Press ENTER for YES or CTRL-C to CANCEL > ' answer
 
 
 DROP DATABASE vaccine_hub
