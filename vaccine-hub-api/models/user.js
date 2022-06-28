@@ -1,4 +1,5 @@
 const {UnauthorisedError} = require("../utils/errors")
+const db = require("../db")
 
 class User {
     static async register(credentials) {
