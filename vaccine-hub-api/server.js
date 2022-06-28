@@ -21,7 +21,7 @@ app.use(morgan("tiny"))
 app.use("/auth", authRoutes)
 
 app.use((req, res, next) => {
-    return next(new BadRequestError.NotFoundError)
+    return next(new NotFoundError())
 })
 
 app.use((err, req, res, next) => {
