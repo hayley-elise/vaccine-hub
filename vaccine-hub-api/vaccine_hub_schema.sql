@@ -5,5 +5,5 @@ CREATE TABLE users (
     last_name               TEXT NOT NULL,
     email                   TEXT UNIQUE NOT NULL CHECK (POSITION('@' IN email) > 1),
     location                TEXT NOT NULL,
-    date                    TEXT NOT NULL           
+    date                    TIMESTAMP NOT NULL DEFAULT NOW()        
 );
