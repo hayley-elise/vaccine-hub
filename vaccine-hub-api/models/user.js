@@ -1,4 +1,6 @@
+const bcrypt = require("bcrypt")
 const {BadRequestError, UnauthorisedError} = require("../utils/errors")
+const {BCRYPT_WORK_FACTOR} = require("../config")
 const db = require("../db")
 
 class User {
@@ -13,7 +15,7 @@ class User {
         throw new UnauthorisedError("Invalid email/password")
     }
 
-    
+
     static async register(credentials) {
         // user required to submit email, password, first & last name, location & date 
         // throws error if any is missing
@@ -39,7 +41,7 @@ class User {
         const lowercasedEmail = credentials.email.toLowerCase()
 
         // take user's password & hash it
-
+        const hashedPassword = await bcrypt.hash(credentials.password, BCRYPT_WORK_FACTOR)
 
         // create new user in db with this info
         const result = await db.query (`
@@ -54,7 +56,7 @@ class User {
             VALUES ($1, $2, $3, $4, $5)
 
             RETURNING id, email, first_name, last_name, location, date;
-        `, [lowercasedEmail, credentials.password, credentials.firstName, credentials.lastName, credentials.location]
+        `, [lowercasedEmail, hashedPassword, credentials.firstName, credentials.lastName, credentials.location]
         )
 
         // return the user 
