@@ -13,7 +13,7 @@ class User {
             }
         })
 
-        if (!credentials.email.indexOf("@") <= 0) {
+        if (credentials.email.indexOf("@") <= 0) {
             throw new BadRequestError("Invalid email.")
         }
 
