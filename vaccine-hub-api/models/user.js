@@ -2,6 +2,18 @@ const {BadRequestError, UnauthorisedError} = require("../utils/errors")
 const db = require("../db")
 
 class User {
+    static async login(credentials) {
+        // user required to submit email/password; throws error if either is missing
+        // 
+        // look up user in db by email
+        // if user is found, compare submitted password/db password
+        // if password matches, return the user
+        // 
+        // throws error if any of this goes wrong
+        throw new UnauthorisedError("Invalid email/password")
+    }
+
+    
     static async register(credentials) {
         // user required to submit email, password, first & last name, location & date 
         // throws error if any is missing
@@ -51,16 +63,6 @@ class User {
         return user
     }
 
-    static async login(credentials) {
-        // user required to submit email/password; throws error if either is missing
-        // 
-        // look up user in db by email
-        // if user is found, compare submitted password/db password
-        // if password matches, return the user
-        // 
-        // throws error if any of this goes wrong
-        throw new UnauthorisedError("Invalid email/password")
-    }
 
     static async fetchUserByEmail(email) {
         if (!email) {
