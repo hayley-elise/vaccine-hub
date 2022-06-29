@@ -5,7 +5,7 @@ class User {
     static async register(credentials) {
         // user required to submit email, password, first & last name, location & date 
         // throws error if any is missing
-        const requiredFields = ["email", "password", "first_name", "last_name", "location", "date"]
+        const requiredFields = ["email", "password", "firstName", "lastName", "location", "date"]
 
         requiredFields.forEach(field => {
             if (!credentials.hasOwnProperty(field)) {
@@ -40,7 +40,7 @@ class User {
                 date
             )
 
-            VALUES (s1, s2, s3, s4, s5, s6)
+            VALUES ($1, $2, $3, $4, $5, $6)
 
             RETURNING id, email, first_name, last_name, location, date;
         `, [lowercasedEmail, credentials.password, credentials.firstName, credentials.lastName, credentials.location, credentials.date]
