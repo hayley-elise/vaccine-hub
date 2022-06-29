@@ -13,6 +13,10 @@ class User {
             }
         })
 
+        if (!credentials.email.indexOf("@") <= 0) {
+            throw new BadRequestError("Invalid email.")
+        }
+
         // check if user email exists in db; throws error if it does
         const existingUser = await User.fetchUserByEmail(credentials.email)
         if (existingUser) {
@@ -44,7 +48,7 @@ class User {
 
         // return the user 
         const user = result.rows[0]
-        
+
         return user
     }
 
